@@ -1,0 +1,97 @@
+# Program Name: Lab7.py
+# Course: IT1114 BWA Programming Principles
+# Student Name: Christopher James
+# Assignment Lab7
+# Due Date: 10/19/2025
+
+# Resources: Class notes,prior game development knowledge,help from a friend, and the code was written in pycharm
+
+# Purpose: A blueprint part 2
+
+class Employee:
+    def __init__(self):
+        self._overtime_hourly_salary = None
+        self._hourly_salary = None
+        self._employee_number = 0
+        self._office_number = 0
+        self._name = ""  # This was missing
+        self._birth_month = 0  # This was missing
+        self._birth_day = 0  # This was missing
+        self._birth_year = 0  # This was missing
+        self._total_hours = 0.0
+        self._overtime_hours = 0.0
+
+
+    def get_employee_number(self):
+        return self._employee_number
+
+    def set_employee_number(self, x):
+        self._employee_number = x
+
+    def get_office_number(self):
+        return self._office_number
+
+    def set_office_number(self, x):
+        if 100 <= x <= 500:
+            self._office_number = x
+            return True
+        else:
+            return False
+
+    def get_name(self):
+        return self._name
+
+    def set_name(self, x):
+        self._name = x
+
+    def get_birthdate(self, m, d, y):
+        self._birth_month = m
+        self._birth_day = d
+        self._birth_year = y
+
+    def set_birthdate(self, d, m, y):
+        if (1 <= m <= 12) and (1 <= d <= 31):
+            self._birth_month = m
+            self._birth_day = d
+            self._birth_year = y
+            return True
+        else:
+            return False
+
+    def get_hours_worked(self):
+        return self._total_hours
+
+    def add_hours(self, x):
+        if x > 9:
+            self._total_hours += 9
+            self._overtime_hours += (x - 9)
+        else:
+            self._total_hours += x
+
+    def get_hours_overtime(self):
+        return self._overtime_hours
+
+    def set_hourly_salary(self, x):
+        if x < 0:
+            return False
+        else:
+            self._hourly_salary = x
+            return True
+
+    def set_overtime_salary(self, x):
+        if x < 0:
+            return False
+        else:
+            self._overtime_hourly_salary = x
+            return True
+
+    def get_hourly_salary(self):
+        return self._hourly_salary
+
+    def get_overtime_salary(self):
+        return self._overtime_hourly_salary
+
+    def get_pay(self):
+        pay = (self._total_hours * self._hourly_salary) + (self._overtime_hours * self._overtime_hourly_salary)
+        return pay
+
